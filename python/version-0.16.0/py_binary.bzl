@@ -1,5 +1,5 @@
-load("//.endorctl/aspects/oss/python/common:utils.bzl", "compute_package_version_name", "get_dependency_labels", "get_pip_name_and_version")
-load("//.endorctl/aspects/oss/python/provider:endor_python_dependency_info.bzl", "EndorPythonDependencyInfo")
+load("//python/common:utils.bzl", "compute_package_version_name", "get_dependency_labels", "get_pip_name_and_version")
+load("//python/provider:endor_python_dependency_info.bzl", "EndorPythonDependencyInfo")
 
 def _endor_py_binary_resolve_dependencies(target, ctx):
     if PyInfo not in target and not hasattr(ctx, "attr"):
@@ -79,8 +79,8 @@ internal_endor_py_binary_resolve_dependencies = aspect(
     attr_aspects = ["deps"],
     implementation = _endor_py_binary_resolve_dependencies,
     attrs = {
-        "ref": attr.string(),
-        "target_name": attr.string(),
+        "ref": attr.string(values = [""]),
+        "target_name": attr.string(values = [""]),
     },
 )
 
@@ -91,7 +91,7 @@ internal_endor_py_binary_generate_callgraph_metadata = aspect(
     attr_aspects = ["deps"],
     implementation = _endor_py_binary_get_callgraph_metadata,
     attrs = {
-        "ref": attr.string(),
-        "target_name": attr.string(),
+        "ref": attr.string(values = [""]),
+        "target_name": attr.string(values = [""]),
     },
 )

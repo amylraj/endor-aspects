@@ -1,1 +1,7 @@
+load(":py_binary_test.bzl", "py_binary_test")
+
 package(default_visibility = ["//visibility:public"])
+
+py_binary_test(
+    name = "py_binary_test",
+)
