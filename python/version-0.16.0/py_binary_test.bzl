@@ -11,17 +11,6 @@ def _impl(env, target):
     env.expect.target(target).has_provider("PyInfo")
 
 def py_binary_test(name):
-    analysis_test(
-        name = name,
-        target = ":binary",
-        impl = _impl,
-        testing_aspect = endor_py_binary_test_aspect,
-        attrs = {
-            "ref": attr.string(),
-            "target_name": attr.string(),
-        },
-    )
-
     # Non Python Target
     util.empty_file("main.txt")
     util.helper_target(
@@ -42,4 +31,15 @@ def py_binary_test(name):
         name = "binary",
         srcs = ["main.py"],
         deps = [":lib", ":random"],
+    )
+
+    analysis_test(
+        name = name,
+        target = ":binary",
+        impl = _impl,
+        testing_aspect = endor_py_binary_test_aspect,
+        attrs = {
+            "ref": attr.string(),
+            "target_name": attr.string(),
+        },
     )
