@@ -1,0 +1,6 @@
+{
+  "[bazel]": {
+    "editor.formatOnSave": true
+  },
+  "bsv.bzl.lsp.enableCodelenses": true
+}
